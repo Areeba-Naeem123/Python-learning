@@ -61,22 +61,52 @@ class linkedList:
             while current:
                 print(f"{current.data} -> ",end="")
                 current=current.next
+
+    def mergeTwoLists(self, list1,list2):
+        Dumy=Node(0)
+        current=Dumy
+
+        p1=list1.head
+        p2=list2.head
+        while p1 and p2:
+            if p1.data < p2.data:
+                current.next=p1
+                p1=p1.next
+            else:
+                current.next=p2
+                p2=p2.next 
+            
+            current=current.next
         
+        if p1:
+            current.next=p1
+        if p2:
+            current.next=p2
+
+        mergedList=linkedList()
+        mergedList.head=Dumy.next
+        return mergedList
+    
+
+
+
+
 
 
 list1= linkedList()
-list1.insertAtStart(2)
-list1.insertAtStart(3)
-list1.insertAtStart(4)
-list1.insertAtStart(5)
-list1.insertAtStart(6)
-list1.print_list()
+
 print("\ndelete at start ")
 
 list1.delete_start()
 list1.print_list()
 
-
+list1.insertAtEnd(1)
+list1.insertAtEnd(1)
+list1.insertAtEnd(3)
+list1.insertAtEnd(43)
+list1.insertAtEnd(43)
+list1.insertAtEnd(82)
+list1.print_list()
             
 print("\nat end\n ")
 list2= linkedList()
@@ -92,6 +122,15 @@ list2.print_list()
 print("\ndelete at end\n ")
 list2.delete_end()
 list2.print_list()
+
+
+
+
+# ===============================================
+print("\n\nmerged\n")
+l3=linkedList()
+l3=l3.mergeTwoLists(list1,list2)
+l3.print_list()
 
 
 
